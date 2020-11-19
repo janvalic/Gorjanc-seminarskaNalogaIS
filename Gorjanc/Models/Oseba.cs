@@ -8,6 +8,6 @@ namespace Gorjanc.Models
         public int OsebaId { get; set; }
         public string Ime { get; set; }
         public string Priimek { get; set; }
-        public ICollection<Obiskani> Obiskani { get; set; }
+        public ICollection<Obisk> Obiskani { get; set; }
     }
 }

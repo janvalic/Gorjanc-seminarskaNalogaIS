@@ -2,7 +2,7 @@ using System;
 
 namespace Gorjanc.Models
 {
-    public class Obiskani
+    public class Obisk
     {
         public int Id { get; set; }
         public int OsebaId { get; set; }

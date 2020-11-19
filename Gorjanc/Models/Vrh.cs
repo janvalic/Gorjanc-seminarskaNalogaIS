@@ -9,7 +9,7 @@ namespace Gorjanc.Models
         public string Ime { get; set; }
         public int Visina { get; set; }
         public double Koordinate { get; set; }
-        public ICollection<Obiskani> Obiskani { get; set; }
+        public ICollection<Obisk> Obiskani { get; set; }
         public ICollection<Slika> Slika { get; set; }
     }
 }
