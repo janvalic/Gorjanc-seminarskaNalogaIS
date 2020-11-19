@@ -23,6 +23,11 @@ namespace Gorjanc.Controllers
             return View();
         }
 
+        public IActionResult Vrhovi()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
