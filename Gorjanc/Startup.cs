@@ -28,7 +28,7 @@ namespace Gorjanc
             services.AddControllersWithViews();
 
             services.AddDbContext<GorjancContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("GorjancContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
