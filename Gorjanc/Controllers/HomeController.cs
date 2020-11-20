@@ -27,6 +27,10 @@ namespace Gorjanc.Controllers
         {
             return View();
         }
+        public IActionResult Osebe()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
