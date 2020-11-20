@@ -95,7 +95,10 @@ namespace Gorjanc.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Koordinate")
+                    b.Property<double>("KoordinateD")
+                        .HasColumnType("float");
+
+                    b.Property<double>("KoordinateS")
                         .HasColumnType("float");
 
                     b.Property<int>("Visina")

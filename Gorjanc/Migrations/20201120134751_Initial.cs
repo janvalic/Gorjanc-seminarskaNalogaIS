@@ -29,7 +29,8 @@ namespace Gorjanc.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ime = table.Column<string>(nullable: true),
                     Visina = table.Column<int>(nullable: false),
-                    Koordinate = table.Column<double>(nullable: false)
+                    KoordinateS = table.Column<double>(nullable: false),
+                    KoordinateD = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {

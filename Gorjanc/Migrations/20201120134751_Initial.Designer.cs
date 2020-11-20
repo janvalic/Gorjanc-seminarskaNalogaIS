@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gorjanc.Migrations
 {
     [DbContext(typeof(GorjancContext))]
-    [Migration("20201119203322_Initial")]
+    [Migration("20201120134751_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,7 +97,10 @@ namespace Gorjanc.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Koordinate")
+                    b.Property<double>("KoordinateD")
+                        .HasColumnType("float");
+
+                    b.Property<double>("KoordinateS")
                         .HasColumnType("float");
 
                     b.Property<int>("Visina")
