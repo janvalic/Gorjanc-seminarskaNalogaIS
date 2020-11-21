@@ -25,11 +25,16 @@ namespace Gorjanc.Controllers
 
         public IActionResult Vrhovi()
         {
-            return View();
+            return RedirectToAction("Index", "Vrhovi");
         }
         public IActionResult Osebe()
         {
             return View();
+        }
+
+        public IActionResult Uporabniki()
+        {
+            return RedirectToAction("Uporabniki", "Osebe");
         }
 
         public IActionResult Privacy()
