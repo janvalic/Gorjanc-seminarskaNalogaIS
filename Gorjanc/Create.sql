@@ -2,6 +2,8 @@
 -- Connect to the 'master' database to run this snippet
 USE master
 GO
+
+DROP DATABASE IF EXISTS GorjancDatabase;
 -- Create the new database if it does not exist already
 IF NOT EXISTS (
     SELECT name
