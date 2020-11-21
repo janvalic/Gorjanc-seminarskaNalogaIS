@@ -25,6 +25,12 @@ namespace Gorjanc.Controllers
             return View(await _context.Osebe.ToListAsync());
         }
 
+        // GET: Uporabniki
+        public async Task<IActionResult> Uporabniki()
+        {
+            return View(await _context.Osebe.ToListAsync());
+        }
+
         // GET: Osebe/Details/5
         public async Task<IActionResult> Details(int? id)
         {

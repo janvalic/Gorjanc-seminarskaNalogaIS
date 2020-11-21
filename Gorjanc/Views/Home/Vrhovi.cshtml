@@ -1,10 +1,7 @@
-@model Gorjanc.Models.Oseba
+@model IEnumerable<Gorjanc.Models.Oseba>
+
 @{
-    ViewData["Title"] = "Vrhovi";
+    ViewData["Title"] = "Index";
 }
 
 <div id="map"></div>
-
-<script>
-    L.marker([45.9256043, 14.0443605]).addTo(map).bindPopup("Tomi šitšek").openPopup();
-</script>
