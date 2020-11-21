@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Gorjanc.Data;
 using Microsoft.EntityFrameworkCore;
+using Gorjanc.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Gorjanc
 {
@@ -29,6 +31,11 @@ namespace Gorjanc
 
             services.AddDbContext<GorjancContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("GorjancContext")));
+
+                services.AddIdentity<Uporabnik, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
+                .AddEntityFrameworkStores<GorjancContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +56,7 @@ namespace Gorjanc
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -56,6 +64,7 @@ namespace Gorjanc
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

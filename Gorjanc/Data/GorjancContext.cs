@@ -1,9 +1,10 @@
 using Gorjanc.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Gorjanc.Data
 {
-    public class GorjancContext : DbContext
+    public class GorjancContext : IdentityDbContext<Uporabnik>
     {
         public GorjancContext(DbContextOptions<GorjancContext> options) : base(options)
         {
@@ -16,6 +17,7 @@ namespace Gorjanc.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Oseba>().ToTable("Oseba");
             modelBuilder.Entity<Obisk>().ToTable("Obisk");
             modelBuilder.Entity<Vrh>().ToTable("Vrh");

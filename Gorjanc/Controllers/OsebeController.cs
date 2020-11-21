@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gorjanc.Data;
 using Gorjanc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gorjanc.Controllers
 {
+    [Authorize]
     public class OsebeController : Controller
     {
         private readonly GorjancContext _context;
