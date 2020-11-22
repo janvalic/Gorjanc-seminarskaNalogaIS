@@ -25,8 +25,8 @@ namespace Gorjanc.Controllers
             return View(await _context.Vrhovi.ToListAsync());
         }
 
-        // GET: Vrhovi/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Vrhovi/Vrh/5
+        public async Task<IActionResult> Vrh(int? id)
         {
             if (id == null)
             {
