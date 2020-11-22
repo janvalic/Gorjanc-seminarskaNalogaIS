@@ -1,8 +1,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Gorjanc.Models
 
-@inject SignInManager<Uporabnik> SignInManager
-@inject UserManager<Uporabnik> UserManager
+@inject SignInManager<Oseba> SignInManager
+@inject UserManager<Oseba> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

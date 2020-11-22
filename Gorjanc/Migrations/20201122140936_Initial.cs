@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gorjanc.Migrations
 {
-    public partial class Uporabnik : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +22,7 @@ namespace Gorjanc.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "Oseba",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -40,12 +40,29 @@ namespace Gorjanc.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    OsebaId = table.Column<int>(nullable: false),
                     Ime = table.Column<string>(nullable: true),
                     Priimek = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.PrimaryKey("PK_Oseba", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vrh",
+                columns: table => new
+                {
+                    VrhId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(nullable: true),
+                    Visina = table.Column<int>(nullable: false),
+                    KoordinateS = table.Column<double>(nullable: false),
+                    KoordinateD = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vrh", x => x.VrhId);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,9 +100,9 @@ namespace Gorjanc.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        name: "FK_AspNetUserClaims_Oseba_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Oseba",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -94,8 +111,8 @@ namespace Gorjanc.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -103,9 +120,9 @@ namespace Gorjanc.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        name: "FK_AspNetUserLogins_Oseba_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Oseba",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -127,9 +144,9 @@ namespace Gorjanc.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        name: "FK_AspNetUserRoles_Oseba_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Oseba",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -139,18 +156,67 @@ namespace Gorjanc.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        name: "FK_AspNetUserTokens_Oseba_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Oseba",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Obisk",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OsebaId = table.Column<int>(nullable: false),
+                    VrhId = table.Column<int>(nullable: false),
+                    Datum = table.Column<DateTime>(nullable: false),
+                    OsebaId1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Obisk", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Obisk_Oseba_OsebaId1",
+                        column: x => x.OsebaId1,
+                        principalTable: "Oseba",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Obisk_Vrh_VrhId",
+                        column: x => x.VrhId,
+                        principalTable: "Vrh",
+                        principalColumn: "VrhId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Slika",
+                columns: table => new
+                {
+                    SlikaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VrhId = table.Column<int>(nullable: false),
+                    Img = table.Column<byte[]>(nullable: true),
+                    DatumSlike = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Slika", x => x.SlikaId);
+                    table.ForeignKey(
+                        name: "FK_Slika_Vrh_VrhId",
+                        column: x => x.VrhId,
+                        principalTable: "Vrh",
+                        principalColumn: "VrhId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -182,16 +248,31 @@ namespace Gorjanc.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Obisk_OsebaId1",
+                table: "Obisk",
+                column: "OsebaId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Obisk_VrhId",
+                table: "Obisk",
+                column: "VrhId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "AspNetUsers",
+                table: "Oseba",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "AspNetUsers",
+                table: "Oseba",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Slika_VrhId",
+                table: "Slika",
+                column: "VrhId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -212,10 +293,19 @@ namespace Gorjanc.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Obisk");
+
+            migrationBuilder.DropTable(
+                name: "Slika");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Oseba");
+
+            migrationBuilder.DropTable(
+                name: "Vrh");
         }
     }
 }

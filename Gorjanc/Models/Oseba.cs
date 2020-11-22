@@ -1,9 +1,10 @@
 
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
 namespace Gorjanc.Models
 {
-    public class Oseba
+    public class Oseba : IdentityUser
     {
         public int OsebaId { get; set; }
         public string Ime { get; set; }

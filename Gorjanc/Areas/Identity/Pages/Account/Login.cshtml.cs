@@ -18,13 +18,13 @@ namespace Gorjanc.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<Uporabnik> _userManager;
-        private readonly SignInManager<Uporabnik> _signInManager;
+        private readonly UserManager<Oseba> _userManager;
+        private readonly SignInManager<Oseba> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<Uporabnik> signInManager, 
+        public LoginModel(SignInManager<Oseba> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<Uporabnik> userManager)
+            UserManager<Oseba> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

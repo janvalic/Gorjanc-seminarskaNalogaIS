@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gorjanc.Migrations
 {
     [DbContext(typeof(GorjancContext))]
-    [Migration("20201121165054_Uporabnik")]
-    partial class Uporabnik
+    [Migration("20201122140936_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,12 +34,15 @@ namespace Gorjanc.Migrations
                     b.Property<int>("OsebaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("OsebaId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("VrhId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OsebaId");
+                    b.HasIndex("OsebaId1");
 
                     b.HasIndex("VrhId");
 
@@ -47,47 +50,6 @@ namespace Gorjanc.Migrations
                 });
 
             modelBuilder.Entity("Gorjanc.Models.Oseba", b =>
-                {
-                    b.Property<int>("OsebaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Ime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Priimek")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OsebaId");
-
-                    b.ToTable("Oseba");
-                });
-
-            modelBuilder.Entity("Gorjanc.Models.Slika", b =>
-                {
-                    b.Property<int>("SlikaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DatumSlike")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Img")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("VrhId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SlikaId");
-
-                    b.HasIndex("VrhId");
-
-                    b.ToTable("Slika");
-                });
-
-            modelBuilder.Entity("Gorjanc.Models.Uporabnik", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -123,6 +85,9 @@ namespace Gorjanc.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<int>("OsebaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -155,7 +120,30 @@ namespace Gorjanc.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Oseba");
+                });
+
+            modelBuilder.Entity("Gorjanc.Models.Slika", b =>
+                {
+                    b.Property<int>("SlikaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumSlike")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Img")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("VrhId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SlikaId");
+
+                    b.HasIndex("VrhId");
+
+                    b.ToTable("Slika");
                 });
 
             modelBuilder.Entity("Gorjanc.Models.Vrh", b =>
@@ -260,10 +248,12 @@ namespace Gorjanc.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -300,10 +290,12 @@ namespace Gorjanc.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -317,9 +309,7 @@ namespace Gorjanc.Migrations
                 {
                     b.HasOne("Gorjanc.Models.Oseba", null)
                         .WithMany("Obiskani")
-                        .HasForeignKey("OsebaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OsebaId1");
 
                     b.HasOne("Gorjanc.Models.Vrh", null)
                         .WithMany("Obiskani")
@@ -348,7 +338,7 @@ namespace Gorjanc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Gorjanc.Models.Uporabnik", null)
+                    b.HasOne("Gorjanc.Models.Oseba", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -357,7 +347,7 @@ namespace Gorjanc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Gorjanc.Models.Uporabnik", null)
+                    b.HasOne("Gorjanc.Models.Oseba", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -372,7 +362,7 @@ namespace Gorjanc.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gorjanc.Models.Uporabnik", null)
+                    b.HasOne("Gorjanc.Models.Oseba", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -381,7 +371,7 @@ namespace Gorjanc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Gorjanc.Models.Uporabnik", null)
+                    b.HasOne("Gorjanc.Models.Oseba", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

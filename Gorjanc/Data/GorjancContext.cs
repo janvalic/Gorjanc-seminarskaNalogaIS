@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Gorjanc.Data
 {
-    public class GorjancContext : IdentityDbContext<Uporabnik>
+    public class GorjancContext : IdentityDbContext<Oseba>
     {
         public GorjancContext(DbContextOptions<GorjancContext> options) : base(options)
         {

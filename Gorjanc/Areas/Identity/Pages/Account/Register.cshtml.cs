@@ -20,14 +20,14 @@ namespace Gorjanc.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<Uporabnik> _signInManager;
-        private readonly UserManager<Uporabnik> _userManager;
+        private readonly SignInManager<Oseba> _signInManager;
+        private readonly UserManager<Oseba> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<Uporabnik> userManager,
-            SignInManager<Uporabnik> signInManager,
+            UserManager<Oseba> userManager,
+            SignInManager<Oseba> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -85,7 +85,7 @@ namespace Gorjanc.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Uporabnik { Ime=Input.Name, Priimek=Input.Surname, UserName = Input.Email, Email = Input.Email };
+                var user = new Oseba { Ime=Input.Name, Priimek=Input.Surname, UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

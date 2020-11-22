@@ -32,7 +32,7 @@ namespace Gorjanc
             services.AddDbContext<GorjancContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("GorjancContext")));
 
-                services.AddIdentity<Uporabnik, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
+                services.AddIdentity<Oseba, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
                 .AddEntityFrameworkStores<GorjancContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();

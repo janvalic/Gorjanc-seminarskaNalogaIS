@@ -13,10 +13,10 @@ namespace Gorjanc.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
     {
-        private readonly UserManager<Uporabnik> _userManager;
+        private readonly UserManager<Oseba> _userManager;
         private readonly IEmailSender _sender;
 
-        public RegisterConfirmationModel(UserManager<Uporabnik> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<Oseba> userManager, IEmailSender sender)
         {
             _userManager = userManager;
             _sender = sender;
