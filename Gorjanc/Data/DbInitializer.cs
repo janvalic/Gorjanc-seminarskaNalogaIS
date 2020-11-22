@@ -33,11 +33,12 @@ namespace ContosoUniversity.Data
 
             var vrhovi = new Vrh[]
             {
-            new Vrh{Ime="Triglav",Visina=2864,KoordinateS=46.3792009, KoordinateD=13.8341977},
-            new Vrh{Ime="Matajur",Visina=1641,KoordinateS=46.2120837, KoordinateD=13.5298624},
-            new Vrh{Ime="Krn",Visina=2244,KoordinateS=46.2657651, KoordinateD=13.6592533},
-            new Vrh{Ime="Grintovec",Visina=2558,KoordinateS=46.3502114, KoordinateD=14.5260124},
+            new Vrh{Ime="Triglav",Visina=2864,KoordinateS=46.37830, KoordinateD=13.83658},
+            new Vrh{Ime="Matajur",Visina=1641,KoordinateS=46.21217, KoordinateD=13.5294},
+            new Vrh{Ime="Krn",Visina=2244,KoordinateS=46.26622, KoordinateD=13.65888},
+            new Vrh{Ime="Grintovec",Visina=2558,KoordinateS=46.35771, KoordinateD=14.53522},
             new Vrh{Ime="Snežnik",Visina=1796,KoordinateS=45.5971013, KoordinateD=14.4482676},
+            new Vrh{Ime="Nanos",Visina=1262,KoordinateS=45.77260,KoordinateD=14.05465}
             };
             foreach (Vrh v in vrhovi)
             {
