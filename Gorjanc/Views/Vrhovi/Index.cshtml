@@ -17,7 +17,7 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         for(x in vrhovi) {
-            var niz = "<b><a href='#'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
+            var niz = "<b><a href='https://localhost:5001/Vrhovi/Vrh/" + vrhovi[x]["VrhId"] + "' target='blank'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
             L.marker([vrhovi[x]["KoordinateS"], vrhovi[x]["KoordinateD"]]).addTo(map).bindPopup(niz);
         }
     }
