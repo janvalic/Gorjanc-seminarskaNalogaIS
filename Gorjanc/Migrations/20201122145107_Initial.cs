@@ -205,6 +205,7 @@ namespace Gorjanc.Migrations
                 {
                     SlikaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(nullable: true),
                     VrhId = table.Column<int>(nullable: false),
                     Img = table.Column<byte[]>(nullable: true),
                     DatumSlike = table.Column<DateTime>(nullable: false)

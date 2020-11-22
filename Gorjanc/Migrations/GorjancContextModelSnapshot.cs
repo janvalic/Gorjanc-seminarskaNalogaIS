@@ -131,6 +131,9 @@ namespace Gorjanc.Migrations
                     b.Property<DateTime>("DatumSlike")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
 

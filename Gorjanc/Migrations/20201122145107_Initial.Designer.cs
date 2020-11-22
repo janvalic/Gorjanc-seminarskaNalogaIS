@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gorjanc.Migrations
 {
     [DbContext(typeof(GorjancContext))]
-    [Migration("20201122140936_Initial")]
+    [Migration("20201122145107_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,6 +132,9 @@ namespace Gorjanc.Migrations
 
                     b.Property<DateTime>("DatumSlike")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
