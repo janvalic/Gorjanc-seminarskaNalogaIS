@@ -1,0 +1,49 @@
+@model Gorjanc.Models.Vrh
+
+@{
+    ViewData["Title"] = Html.DisplayFor(model => model.Ime);
+}
+
+<h1>@Html.DisplayFor(model => model.Ime)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Visina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Visina)m
+        </dd>
+        <dt class = "col-sm-2">
+            Koordinate
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KoordinateS)
+        </dd>
+        <dt class = "col-sm-2">
+
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KoordinateD)
+        </dd>
+    </dl>
+</div>
+<div id="map"></div>
+<div id="test"></div>
+<script>
+function mapa() {
+    var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
+    var map = L.map('map').setView([vrhovi["KoordinateS"], vrhovi["KoordinateD"]], 17);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([vrhovi["KoordinateS"], vrhovi["KoordinateD"]]).addTo(map);
+}
+</script>
