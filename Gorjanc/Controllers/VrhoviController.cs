@@ -56,9 +56,6 @@ namespace Gorjanc.Controllers
             }
 
             var vrh = await _context.Vrhovi
-                .Include(v => v.Obiskani)
-                    .ThenInclude(o => o.Oseba)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.VrhId == id);
             if (vrh == null)
             {
