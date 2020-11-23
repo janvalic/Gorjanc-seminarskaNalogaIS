@@ -1,0 +1,34 @@
+@model Gorjanc.Models.Oseba;
+@{
+    ViewData["Title"] = "Test";
+}
+<h2>KYS</h2>
+<table class="table">
+    <tr>
+        <th>
+            Ime
+        </th>
+        <th>
+            Višina
+        </th>
+        <th>
+            Datum
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Obiskani) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrh.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrh.Visina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+    </tr>
+}
+
+</table>
