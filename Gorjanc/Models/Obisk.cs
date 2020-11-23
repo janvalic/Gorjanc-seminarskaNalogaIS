@@ -9,5 +9,7 @@ namespace Gorjanc.Models
         public int VrhId { get; set; }
         public DateTime Datum { get; set; }
 
+        public Vrh Vrh { get; set; }
+        public Oseba Oseba { get; set; }
     }
 }

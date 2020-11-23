@@ -83,9 +83,6 @@ namespace Gorjanc.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<int>("OsebaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -308,11 +305,11 @@ namespace Gorjanc.Migrations
 
             modelBuilder.Entity("Gorjanc.Models.Obisk", b =>
                 {
-                    b.HasOne("Gorjanc.Models.Oseba", null)
+                    b.HasOne("Gorjanc.Models.Oseba", "Oseba")
                         .WithMany("Obiskani")
                         .HasForeignKey("OsebaId1");
 
-                    b.HasOne("Gorjanc.Models.Vrh", null)
+                    b.HasOne("Gorjanc.Models.Vrh", "Vrh")
                         .WithMany("Obiskani")
                         .HasForeignKey("VrhId")
                         .OnDelete(DeleteBehavior.Cascade)

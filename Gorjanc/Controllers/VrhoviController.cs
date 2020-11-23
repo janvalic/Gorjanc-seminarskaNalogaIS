@@ -27,6 +27,26 @@ namespace Gorjanc.Controllers
             return View(await _context.Vrhovi.ToListAsync());
         }
 
+        public async Task<IActionResult> Test(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var vrh = await _context.Vrhovi
+                .Include(v => v.Obiskani)
+                    .ThenInclude(o => o.Oseba)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.VrhId == id);
+            if (vrh == null)
+            {
+                return NotFound();
+            }
+
+            return View(vrh);
+        }
+
         // GET: Vrhovi/Vrh/5
         public async Task<IActionResult> Vrh(int? id)
         {
@@ -36,6 +56,9 @@ namespace Gorjanc.Controllers
             }
 
             var vrh = await _context.Vrhovi
+                .Include(v => v.Obiskani)
+                    .ThenInclude(o => o.Oseba)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.VrhId == id);
             if (vrh == null)
             {
