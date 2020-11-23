@@ -20,7 +20,7 @@ namespace Gorjanc.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Vrhovi");
         }
 
         public IActionResult Vrhovi()
