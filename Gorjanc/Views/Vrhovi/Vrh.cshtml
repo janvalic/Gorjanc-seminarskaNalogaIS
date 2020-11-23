@@ -9,7 +9,8 @@
             <div class="form-group">
                 <div class="col-md-10">
                     <p>Naloži sliko</p>
-                    <input class="form-control" name="files" type="file" />
+                    <input class="form-control" name="files" type="file" multiple="multiple" />
+                    <input type="hidden" name="foreignKey" value="@Html.DisplayFor(model => model.VrhId)"/>
                 </div>
             </div>
             <div class="form-group">

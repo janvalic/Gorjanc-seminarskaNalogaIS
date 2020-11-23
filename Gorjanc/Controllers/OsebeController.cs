@@ -47,35 +47,5 @@ namespace Gorjanc.Controllers
             return View(oseba);
         }
 
-        [HttpPost]
-        public IActionResult Slike_add(IFormFile files)
-        {
-            if (files != null)
-            {
-                if (files.Length > 0)
-                {
-                    //Getting FileName
-                    var fileName = Path.GetFileName(files.FileName);
-                    
-                    var objfiles = new Slika()
-                    {
-                        Ime = fileName,
-        	            VrhId = 2,
-                        DatumSlike = DateTime.Now
-                    };
-
-                    using (var target = new MemoryStream())
-                    {
-                        files.CopyTo(target);
-                        objfiles.Img = target.ToArray();
-                    }
-
-                    _context.Slike.Add(objfiles);
-                    _context.SaveChanges();
-
-                }
-            }
-            return View();
-        }
     }
 }

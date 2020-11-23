@@ -10,6 +10,8 @@ namespace Gorjanc.Models
         public int VrhId { get; set; }
         public byte[] Img { get; set; }
         public DateTime DatumSlike { get; set; }
+
+        public Vrh Vrh { get; set; }
         
     }
 }
