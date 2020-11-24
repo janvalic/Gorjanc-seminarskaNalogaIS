@@ -1,6 +1,6 @@
 @model Gorjanc.Models.Oseba;
 @{
-    ViewData["Title"] = "Test";
+    ViewData["Title"] = "Moji vrhovi";
 }
 <h2>Moji vrhovi</h2>
 <table class="table">
@@ -17,13 +17,13 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.Obiskani) {
+@foreach (var item in Model.Obiskani.Reverse()) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Vrh.Ime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Vrh.Visina)
+            @Html.DisplayFor(modelItem => item.Vrh.Visina)m
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Datum)
