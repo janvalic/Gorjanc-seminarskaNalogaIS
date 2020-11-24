@@ -22,14 +22,8 @@ namespace Gorjanc.Controllers
             _context = context;
         }
 
-        // GET: Osebe
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Osebe.ToListAsync());
-        }
-
         [Authorize]
-        public async Task<IActionResult> Obiskani(String id)
+        public async Task<IActionResult> Obiskani(string id)
         {
             if (id == null)
             {
