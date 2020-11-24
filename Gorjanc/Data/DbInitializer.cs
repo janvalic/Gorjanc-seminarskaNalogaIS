@@ -38,7 +38,14 @@ namespace ContosoUniversity.Data
             new Vrh{Ime="Krn",Visina=2244,KoordinateS=46.26622, KoordinateD=13.65888},
             new Vrh{Ime="Grintovec",Visina=2558,KoordinateS=46.35771, KoordinateD=14.53522},
             new Vrh{Ime="Snežnik",Visina=1796,KoordinateS=45.5971013, KoordinateD=14.4482676},
-            new Vrh{Ime="Nanos",Visina=1262,KoordinateS=45.77260,KoordinateD=14.05465}
+            new Vrh{Ime="Nanos",Visina=1262,KoordinateS=45.77260,KoordinateD=14.05465},
+            new Vrh{Ime="Stol",Visina=2236,KoordinateS=46.43400,KoordinateD=14.17364},
+            new Vrh{Ime="Rožnik",Visina=393,KoordinateS=46.05527,KoordinateD=14.47718},
+            new Vrh{Ime="Cerje",Visina=343,KoordinateS=45.87247,KoordinateD=13.61598},
+            new Vrh{Ime="Rogla",Visina=1517,KoordinateS=46.45649,KoordinateD=15.34561},
+            new Vrh{Ime="Čaven",Visina=1249,KoordinateS=45.92899,KoordinateD=13.85324},
+            new Vrh{Ime="Golica",Visina=1834,KoordinateS=46.49145,KoordinateD=14.05462},
+            new Vrh{Ime="Velika Ponca",Visina=2602,KoordinateS=46.44175,KoordinateD=13.82417},
             };
             foreach (Vrh v in vrhovi)
             {

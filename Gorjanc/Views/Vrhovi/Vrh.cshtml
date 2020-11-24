@@ -8,25 +8,6 @@
 @{
     ViewData["Title"] = Html.DisplayFor(model => model.Ime);
 }
-<div class="row">
-    <div class="col-md-5">
-        <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike_add">
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Naloži sliko</p>
-                    <input class="form-control" name="files" type="file" multiple="multiple" />
-                    <input type="hidden" name="foreignKey" value="@Html.DisplayFor(model => model.VrhId)"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input class="btn btn-success" type="submit" value="Upload" />
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
 <h1>@Html.DisplayFor(model => model.Ime)</h1>
 
 <div>
@@ -39,7 +20,7 @@
             @Html.DisplayFor(model => model.Ime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Visina)
+            Višina
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Visina)m
@@ -58,17 +39,6 @@
         </dd>
     </dl>
 </div>
-<div id="map"></div>
-<script>
-function mapa() {
-    var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
-    var map = L.map('map').setView([vrhovi["KoordinateS"], vrhovi["KoordinateD"]], 17);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    L.marker([vrhovi["KoordinateS"], vrhovi["KoordinateD"]]).addTo(map);
-}
-</script>
 
 <div class="row">
     <div class="col-md-5">
@@ -81,7 +51,37 @@ function mapa() {
             </div>
             <div class="form-group">
                 <div class="col-md-10">
-                    <input class="btn btn-success" type="submit" value="Obisk" />
+                    <input class="btn btn-success" type="submit" value="Dodaj pod obiskane" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="map"></div>
+<script>
+function mapa() {
+    var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
+    var map = L.map('map').setView([vrhovi["KoordinateS"], vrhovi["KoordinateD"]], 17);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([vrhovi["KoordinateS"], vrhovi["KoordinateD"]]).addTo(map);
+}
+</script>
+<div class="row">
+    <div class="col-md-5">
+        <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike_add">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Naloži sliko</p>
+                    <input class="form-control" name="files" type="file" multiple="multiple" />
+                    <input type="hidden" name="foreignKey" value="@Html.DisplayFor(model => model.VrhId)"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="btn btn-success" type="submit" value="Upload" />
                 </div>
             </div>
         </form>
