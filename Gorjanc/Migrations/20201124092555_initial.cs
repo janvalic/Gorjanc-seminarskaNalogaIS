@@ -176,17 +176,16 @@ namespace Gorjanc.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OsebaId = table.Column<int>(nullable: false),
+                    OsebaId = table.Column<string>(nullable: true),
                     VrhId = table.Column<int>(nullable: false),
-                    Datum = table.Column<DateTime>(nullable: false),
-                    OsebaId1 = table.Column<string>(nullable: true)
+                    Datum = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Obisk", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Obisk_Oseba_OsebaId1",
-                        column: x => x.OsebaId1,
+                        name: "FK_Obisk_Oseba_OsebaId",
+                        column: x => x.OsebaId,
                         principalTable: "Oseba",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -248,9 +247,9 @@ namespace Gorjanc.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Obisk_OsebaId1",
+                name: "IX_Obisk_OsebaId",
                 table: "Obisk",
-                column: "OsebaId1");
+                column: "OsebaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Obisk_VrhId",

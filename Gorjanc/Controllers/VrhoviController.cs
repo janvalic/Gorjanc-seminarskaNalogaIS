@@ -106,5 +106,21 @@ namespace Gorjanc.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Obisk_add(string oseba, int foreignKey)
+        {
+            var novObisk = new Obisk()
+            {
+                OsebaId = oseba,
+                VrhId = foreignKey,
+                Datum = DateTime.Now
+            };
+
+            _context.Obiskani.Add(novObisk);
+            _context.SaveChanges();
+            
+            return RedirectToAction("Index", "Vrhovi");
+        }
     }
 }

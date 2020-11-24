@@ -48,20 +48,10 @@ namespace ContosoUniversity.Data
 
             var obiskani = new Obisk[]
             {
-            new Obisk{OsebaId=1,VrhId=1,Datum=DateTime.Parse("28-07-2020")},
-            new Obisk{OsebaId=1,VrhId=5,Datum=DateTime.Parse("15-08-2020")},
-            new Obisk{OsebaId=1,VrhId=3,Datum=DateTime.Parse("30-08-2020")},
-            new Obisk{OsebaId=2,VrhId=2,Datum=DateTime.Parse("30-06-2020")},
-            new Obisk{OsebaId=2,VrhId=3,Datum=DateTime.Parse("06-07-2020")},
-            new Obisk{OsebaId=2,VrhId=4,Datum=DateTime.Parse("19-07-2020")},
-            new Obisk{OsebaId=3,VrhId=5,Datum=DateTime.Parse("16-08-2020")},
-            new Obisk{OsebaId=4,VrhId=1,Datum=DateTime.Parse("28-07-2020")},
-            new Obisk{OsebaId=4,VrhId=3,Datum=DateTime.Parse("21-08-2020")},
-            new Obisk{OsebaId=4,VrhId=3,Datum=DateTime.Parse("05-09-2020")},
-            new Obisk{OsebaId=4,VrhId=4,Datum=DateTime.Parse("11-09-2020")},
-            new Obisk{OsebaId=4,VrhId=1,Datum=DateTime.Parse("25-09-2020")},
-            new Obisk{OsebaId=5,VrhId=2,Datum=DateTime.Parse("14-05-2020")},
-            new Obisk{OsebaId=5,VrhId=5,Datum=DateTime.Parse("23-05-2020")},
+            new Obisk{OsebaId="1",VrhId=1,Datum=DateTime.Parse("28-07-2020")},
+            new Obisk{OsebaId="1",VrhId=5,Datum=DateTime.Parse("15-08-2020")},
+            new Obisk{OsebaId="1",VrhId=3,Datum=DateTime.Parse("30-08-2020")},
+            new Obisk{OsebaId="1",VrhId=2,Datum=DateTime.Parse("30-06-2020")},
 
             };
             foreach (Obisk ob in obiskani)

@@ -29,10 +29,7 @@ namespace Gorjanc.Migrations
                     b.Property<DateTime>("Datum")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OsebaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OsebaId1")
+                    b.Property<string>("OsebaId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("VrhId")
@@ -40,7 +37,7 @@ namespace Gorjanc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OsebaId1");
+                    b.HasIndex("OsebaId");
 
                     b.HasIndex("VrhId");
 
@@ -307,7 +304,7 @@ namespace Gorjanc.Migrations
                 {
                     b.HasOne("Gorjanc.Models.Oseba", "Oseba")
                         .WithMany("Obiskani")
-                        .HasForeignKey("OsebaId1");
+                        .HasForeignKey("OsebaId");
 
                     b.HasOne("Gorjanc.Models.Vrh", "Vrh")
                         .WithMany("Obiskani")
@@ -318,7 +315,7 @@ namespace Gorjanc.Migrations
 
             modelBuilder.Entity("Gorjanc.Models.Slika", b =>
                 {
-                    b.HasOne("Gorjanc.Models.Vrh", null)
+                    b.HasOne("Gorjanc.Models.Vrh", "Vrh")
                         .WithMany("Slika")
                         .HasForeignKey("VrhId")
                         .OnDelete(DeleteBehavior.Cascade)
