@@ -9,6 +9,7 @@ using Gorjanc.Data;
 using Gorjanc.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gorjanc.Controllers
 {
@@ -108,6 +109,7 @@ namespace Gorjanc.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Obisk_add(string oseba, int foreignKey)
         {
             var novObisk = new Obisk()
