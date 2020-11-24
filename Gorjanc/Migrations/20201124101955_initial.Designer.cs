@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gorjanc.Migrations
 {
     [DbContext(typeof(GorjancContext))]
-    [Migration("20201124092555_initial")]
+    [Migration("20201124101955_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
