@@ -1,3 +1,8 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Oseba> SignInManager
+@inject UserManager<Oseba> UserManager
+
 @model Gorjanc.Models.Vrh
 
 @{
@@ -54,7 +59,6 @@
     </dl>
 </div>
 <div id="map"></div>
-<div id="test"></div>
 <script>
 function mapa() {
     var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
@@ -65,3 +69,21 @@ function mapa() {
     L.marker([vrhovi["KoordinateS"], vrhovi["KoordinateD"]]).addTo(map);
 }
 </script>
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Obisk_add">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input name="oseba" type="hidden" value="@UserManager.GetUserId(User)" />
+                    <input name="foreignKey" type="hidden" value="@Html.DisplayFor(model => model.VrhId)"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="btn btn-success" type="submit" value="Obisk" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
