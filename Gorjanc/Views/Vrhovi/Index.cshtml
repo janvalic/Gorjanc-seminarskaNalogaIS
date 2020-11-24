@@ -2,15 +2,18 @@
 @{
     ViewData["Title"] = "Domov";
 }
-<p>
-    <a asp-action="Create">Dodaj nov hrib</a>
-</p>
 <div class="text-center">
     <img src="~/favicon.ico" height="150vh">
     <h1 class="display-4">Gorjanc</h1>
-    <img src="https://cdn.discordapp.com/emojis/724736544040026142.png?v=1" onload="markacija()"></img>
-    <h2>Lokacije</h2>
+    </br>
+    </br>
+    </br>
+    </br>
+    <h2>Shranjeni vrhovi</h2>
     <div id="map"></div>
+    <p>
+        <a asp-action="Create">Dodaj nov hrib</a>
+    </p>
     <script>
     function mapa() {
         var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));

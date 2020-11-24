@@ -9,6 +9,7 @@ using Gorjanc.Data;
 using Gorjanc.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gorjanc.Controllers
 {
@@ -27,6 +28,7 @@ namespace Gorjanc.Controllers
             return View(await _context.Osebe.ToListAsync());
         }
 
+        [Authorize]
         public async Task<IActionResult> Obiskani(String id)
         {
             if (id == null)

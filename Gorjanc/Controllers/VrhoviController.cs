@@ -73,7 +73,7 @@ namespace Gorjanc.Controllers
         }
         public IActionResult Slike_add()
         {
-            return View();
+            return RedirectToAction("Index", "Vrhovi");
         }
 
         [HttpPost]
