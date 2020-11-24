@@ -47,13 +47,13 @@ namespace Gorjanc.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(32, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            [Display(Name = "Name")]
+            [StringLength(32, ErrorMessage = "{0} mora imeti vsaj {2} in ne več kot {1} znakov.", MinimumLength = 3)]
+            [Display(Name = "Ime")]
             public string Name { get; set; }
 
             [Required]
-            [StringLength(32, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
-            [Display(Name = "Surname")]
+            [StringLength(32, ErrorMessage = "{0} mora imeti vsaj {2} in ne več kot {1} znakov.", MinimumLength = 3)]
+            [Display(Name = "Priimek")]
             public string Surname { get; set; }
 
             [Required]
@@ -62,14 +62,14 @@ namespace Gorjanc.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} mora imeti vsaj {2} in ne več kot {1} znakov.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Geslo")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Potrdi geslo")]
+            [Compare("Password", ErrorMessage = "Gesla se ne ujemata")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -89,7 +89,7 @@ namespace Gorjanc.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Uporabnik je naredil nov račun");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
