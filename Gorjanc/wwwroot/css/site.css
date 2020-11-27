@@ -70,11 +70,16 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-
 #map {
   height: 80vh;
 }
-nav-item-right {
-  display: inline;
-  float: right;
+
+#vreme {
+  width: 100%;
+}
+div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.napoved-5, div.napoved-6, div.napoved-7{
+  width: 12.5%;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid black;
 }
