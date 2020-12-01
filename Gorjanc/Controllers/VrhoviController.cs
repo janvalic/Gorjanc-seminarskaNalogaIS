@@ -10,6 +10,7 @@ using Gorjanc.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Gorjanc.Controllers
 {
@@ -17,9 +18,12 @@ namespace Gorjanc.Controllers
     {
         private readonly GorjancContext _context;
 
-        public VrhoviController(GorjancContext context)
+        private IWebHostEnvironment Environment;
+
+        public VrhoviController(GorjancContext context, IWebHostEnvironment _enviroment)
         {
             _context = context;
+            Environment = _enviroment;
         }
 
         // GET: Vrhovi
@@ -78,37 +82,6 @@ namespace Gorjanc.Controllers
         }
 
         [HttpPost]
-        public IActionResult Slike_add(IFormFile files, int foreignKey)
-        {
-            if (files != null)
-            {
-                if (files.Length > 0)
-                {
-                    //Getting FileName
-                    var fileName = Path.GetFileName(files.FileName);
-                    
-                    var novaslika = new Slika()
-                    {
-                        Ime = fileName,
-        	            VrhId = foreignKey,
-                        DatumSlike = DateTime.Now
-                    };
-
-                    using (var target = new MemoryStream())
-                    {
-                        files.CopyTo(target);
-                        novaslika.Img = target.ToArray();
-                    }
-
-                    _context.Slike.Add(novaslika);
-                    _context.SaveChanges();
-
-                }
-            }
-            return View();
-        }
-
-        [HttpPost]
         [Authorize]
         public IActionResult Obisk_add(string oseba, int foreignKey)
         {
@@ -123,6 +96,35 @@ namespace Gorjanc.Controllers
             _context.SaveChanges();
             
             return RedirectToAction("Index", "Vrhovi");
+        }
+
+        [HttpPost]
+        public IActionResult Slike(IFormFile files, int foreignKey)
+        {
+            string wwwPath = this.Environment.WebRootPath;
+            string contentPath = this.Environment.ContentRootPath;
+
+            string path = Path.Combine(this.Environment.WebRootPath, "Images");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            
+            string fileName = Path.GetFileName(files.FileName);
+            using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+            {
+                files.CopyTo(stream);
+                ViewBag.Message = "File uploaded";
+                var novaslika = new Slika()
+                    {
+                        Ime = fileName,
+        	            VrhId = foreignKey,
+                        DatumSlike = DateTime.Now
+                    };
+                _context.Slike.Add(novaslika);
+                _context.SaveChanges();
+            }
+            return View();
         }
     }
 }
