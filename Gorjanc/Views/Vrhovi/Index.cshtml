@@ -13,9 +13,6 @@
     </br/>
     <h2>Izberi osvojen vrh:</h2>
     <div id="map"></div>
-    <p>
-        <a asp-action="Create">Dodaj nov vrh</a>
-    </p>
     <script>
     function mapa() {
         var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
