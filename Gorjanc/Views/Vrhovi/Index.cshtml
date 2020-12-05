@@ -23,7 +23,7 @@
         
         var markers = L.markerClusterGroup();
         for(x in vrhovi) {
-            var niz = "<b><a href='https://localhost:5001/Vrhovi/Vrh/" + vrhovi[x]["VrhId"] + "' target='blank'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
+            var niz = "<b><a href='/Vrhovi/Vrh/" + vrhovi[x]["VrhId"] + "' target='blank'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
             markers.addLayer(L.marker([vrhovi[x]["KoordinateS"], vrhovi[x]["KoordinateD"]]).bindPopup(niz));
         }
         map.addLayer(markers);
