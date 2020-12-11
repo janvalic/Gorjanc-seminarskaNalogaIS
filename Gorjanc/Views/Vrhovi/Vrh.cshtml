@@ -63,6 +63,7 @@
         <div class="opis"></div>
     </div>
 </div>
+<div id="test"></div>
 <script>
 function mapa() {
     var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
@@ -71,10 +72,6 @@ function mapa() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     L.marker([vrhovi["KoordinateS"], vrhovi["KoordinateD"]]).addTo(map);
-    var gpx = "~/gpx/15.gpx";
-    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
-        map.fitBounds(e.target.getBounds());
-    }).addTo(map);
 
     //vreme
     var key = '3a1e370b2ee30b01139e7bcf254d2de8';
@@ -122,4 +119,3 @@ function mapa() {
         </form>
     </div>
 </div>
-<img src="~/Images/kristjan_desno.png">
