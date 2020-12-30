@@ -30,9 +30,16 @@ namespace Gorjanc
             services.AddControllersWithViews();
 
             services.AddDbContext<GorjancContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("AzureContext")));
+            options.UseSqlServer(Configuration.GetConnectionString("GorjancContext")));
 
-                services.AddIdentity<Oseba, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
+                services.AddIdentity<Oseba, IdentityRole>(options => {
+                    options.Stores.MaxLengthForKeys = 128;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 6;
+                })
                 .AddEntityFrameworkStores<GorjancContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
