@@ -139,6 +139,26 @@ body {
   margin-top: 20vh;
 }
 
+#data td {
+  padding: 15px;
+  padding-right: 10vw;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#ivk {
+  width: 50%;
+  height: 20vh;
+  display: inline-block;
+}
+
+#add {
+  margin-top: -50%;
+  width: 49%;
+  display: inline-block;
+  text-align: right;
+}
+
 div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.napoved-5, div.napoved-6, div.napoved-7{
   width: 12.5%;
   display: inline-block;
@@ -147,4 +167,9 @@ div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.n
 
 .image {
   margin: 5px;
+}
+
+form input[type=file] {
+  margin: 0 auto;
+  width: 33%;
 }

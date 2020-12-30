@@ -14,52 +14,47 @@
     </div>
 </div>
 
-<div class="text-center">
-    <div id="data">
-        <hr />
-        <dl class="row">
-            <dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.Ime)
-            </dt>
-            <dd class = "col-sm-7">
-                @Html.DisplayFor(model => model.Ime)
-            </dd>
-            <dd class = "col-sm-3">
-                <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Obisk_add">
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input name="oseba" type="hidden" value="@UserManager.GetUserId(User)" />
-                        <input name="foreignKey" type="hidden" value="@Html.DisplayFor(model => model.VrhId)"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input class="btn btn-success" type="submit" value="Dodaj pod obiskane" />
-                    </div>
-                </div>
-            </form>
-            </dd>
-            <dt class = "col-sm-2">
-                Višina
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Visina)m
-            </dd>
-            <dt class = "col-sm-2">
-                Koordinate
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.KoordinateS)
-            </dd>
-            <dt class = "col-sm-2">
-
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.KoordinateD)
-            </dd>
-        </dl>
+<div id="data">
+    <div id="ivk">
+        <table>
+            <tr>
+                <td><b>Ime</b></td>
+                <td>@Html.DisplayFor(model => model.Ime)</td>
+            </tr>
+            <tr>
+                <td><b>Višina</b></td>
+                <td>@Html.DisplayFor(model => model.Visina)m</td>
+            </tr>
+            <tr>
+                <td><b>Koordinate</b></td>
+                <td>@Html.DisplayFor(model => model.KoordinateS)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.DisplayFor(model => model.KoordinateD)</td>
+            </tr>
+        </table>
     </div>
+    <div id="add">
+        <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Obisk_add">
+            <div class="form-group">
+                <div>
+                    <input name="oseba" type="hidden" value="@UserManager.GetUserId(User)" />
+                    <input name="foreignKey" type="hidden" value="@Html.DisplayFor(model => model.VrhId)"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input class="btn btn-success" type="submit" value="Dodaj pod obiskane" />
+                </div>
+            </div>
+        </form>
+    </div> 
+</div>
 
+<div class="break"></div>
+
+<div class="text-center">
     <div id="map"></div>
     <div id="vreme">
         <h2>Vremenska napoved</h2>
@@ -99,11 +94,11 @@
                     case 6: dan = "NED"; break;
                 }
                 $("#vreme").append("<div class='napoved-"+x+"'></div>")
-                $(".napoved-"+x).append("<div class='dan'>" + dan + "</div");
+                $(".napoved-"+x).append("<div class='dan'> <b>" + dan + "</b></div");
                 $(".napoved-"+x).append("<div class='opis'><img src='http://openweathermap.org/img/wn/" + result["daily"][x]["weather"][0]["icon"] + "	&#64;2x.png'></div");
-                $(".napoved-"+x).append("<div class='temperatura'>" + result["daily"][x]["temp"]["day"] + "°C</div");
-                $(".napoved-"+x).append("<div class='občutek'>" + result["daily"][x]["feels_like"]["day"] + "°C</div");
-                $(".napoved-"+x).append("<div class='veter'>" + result["daily"][x]["wind_speed"] + "km/h</div");
+                $(".napoved-"+x).append("<div class='temperatura'>" + Math.round(result["daily"][x]["temp"]["day"] * 10) / 10 + "°C</div");
+                $(".napoved-"+x).append("<div class='občutek'>" + Math.round(result["daily"][x]["feels_like"]["day"] * 10) / 10 + "°C</div");
+                $(".napoved-"+x).append("<div class='veter'>" + Math.round(result["daily"][x]["wind_speed"] * 10) / 10 + " km/h</div");
             }
         });
 
@@ -115,22 +110,22 @@
         });
     }
     </script>
-    <div class="row">
-        <div class="col-md-5">
-            <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike">
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <p>Naloži sliko</p>
-                        <input class="form-control" name="files" type="file" multiple="multiple" />
-                        <input type="hidden" name="foreignKey" value="@Html.DisplayFor(model => model.VrhId)"/>
-                    </div>
+
+    <div class="form">
+        <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike">
+            <div class="form-group">
+                <div>
+                    <h5>Naloži sliko</h5>
+                    <input class="form-control" name="files" type="file" multiple="multiple" />
+                    <input type="hidden" name="foreignKey" value="@Html.DisplayFor(model => model.VrhId)"/>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input class="btn btn-success" type="submit" value="Upload" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input class="btn btn-success" type="submit" value="Naloži" />
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+    
 </div>
