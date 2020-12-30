@@ -103,5 +103,10 @@ namespace Gorjanc.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> VrhSlike()
+        {
+            return Json(_context.Slike.ToList());
+        }
     }
 }
