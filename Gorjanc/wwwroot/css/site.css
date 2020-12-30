@@ -70,16 +70,81 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+#index {
+  position: absolute;
+  top: 77px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 77px);
+  text-align: center;
+  vertical-align: middle;
+  background-image: url("/Images/triglav.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#tekst {
+  position: absolute;
+  top: calc(50% - 77px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#onas {
+  margin-top: calc(110vh - 77px);
+}
+
+#mapa {
+  margin-top: 10vh;
+}
+
 #map {
   height: 80vh;
 }
 
 #vreme {
+  margin-top: 5vh;
   width: 100%;
 }
+
+#test {
+  margin-top: 5vh;
+}
+
+.break {
+  margin-top: 2vh;
+}
+
+.banner {
+  position: absolute;
+  top: 77px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  vertical-align: middle;
+  height: 15vh;
+  background-image: url("/Images/banner1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#data {
+  margin-top: 20vh;
+}
+
 div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.napoved-5, div.napoved-6, div.napoved-7{
   width: 12.5%;
   display: inline-block;
   text-align: center;
-  border: 1px solid black;
+}
+
+.image {
+  margin: 5px;
 }
