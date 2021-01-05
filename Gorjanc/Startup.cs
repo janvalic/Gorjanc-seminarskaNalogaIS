@@ -66,7 +66,7 @@ namespace Gorjanc
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gorjanc API V1");
+                c.SwaggerEndpoint("/api/v1/swagger.json", "Gorjanc API V1");
             });
             app.UseRouting();
 
