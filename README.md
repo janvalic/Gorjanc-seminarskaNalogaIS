@@ -1,7 +1,7 @@
 # Gorjanc
 
 ### Avtorja 
-Jan Valič - 63190308
+Jan Valič - 63190308 <br/>
 Žan Luka Nusdorfer - 63190202
 
 ### Opis
