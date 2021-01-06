@@ -178,6 +178,15 @@ form input[type=file] {
 .autocomplete {
   position: relative;
   display: inline-block;
+  width: 100%;
+}
+
+form div.autocomplete input[type=text] {
+  width: 100%;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .autocomplete-items {
@@ -194,6 +203,7 @@ form input[type=file] {
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #ddd;
+  border-radius: 4px;
   border-bottom: 1px solid #ddd;
 }
 .autocomplete-items div:hover {

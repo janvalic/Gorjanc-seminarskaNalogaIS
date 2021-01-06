@@ -6,8 +6,8 @@
 <div id="index">
     <div id="tekst">
         <img src="~/gorjanci.jpg" height="200vh">
-        <h1>Gorjanc</h1>
-        <h3>digitalna planinska knjiga</h3>
+        <h1><b>Gorjanc</b></h1>
+        <h3><b>digitalna planinska knjiga</b></h3>
     </div>  
 </div>
 
@@ -23,13 +23,13 @@
         <h2>Izberi vrh:</h2>
         <div class="break"></div>
         <form autocomplete="off" method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Vrh">
-            <div class="autocomplete" style="width:300px;">
+            <div class="autocomplete">
                 <input id="searchField" type="text" name="vrh" placeholder="Poišči vrh" />
                 <input id="vrhSearchId" type="hidden" name="id" value="1"/>
-                <div id="test"></div>
             </div>
-            <input type="submit" value="Išči"/>
+            <input class="btn btn-success" type="submit" value="Išči"/>
         </form>
+        <div class="break"></div>
         <div id="map"></div>
         <script>
             function mapa() {
