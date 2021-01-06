@@ -22,22 +22,37 @@
     <div id="mapa">
         <h2>Izberi vrh:</h2>
         <div class="break"></div>
+        <form autocomplete="off">
+            <div class="autocomplete" style="width:300px;">
+            <input id="searchField" type="text" name="vrh" placeholder="Poišči vrh" />
+            </div>
+            <input type="submit" />
+        </form>
         <div id="map"></div>
         <script>
-        function mapa() {
-            var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
-            var map = L.map('map').setView([46.1722, 14.9881], 9);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            
-            var markers = L.markerClusterGroup();
-            for(x in vrhovi) {
-                var niz = "<b><a href='/Vrhovi/Vrh/" + vrhovi[x]["VrhId"] + "' target='blank'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
-                markers.addLayer(L.marker([vrhovi[x]["KoordinateS"], vrhovi[x]["KoordinateD"]]).bindPopup(niz));
+            function mapa() {
+                var vrhovi = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented));
+                var map = L.map('map').setView([46.1722, 14.9881], 9);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+                
+                var markers = L.markerClusterGroup();
+                for(x in vrhovi) {
+                    var niz = "<b><a href='/Vrhovi/Vrh/" + vrhovi[x]["VrhId"] + "' target='blank'>" + vrhovi[x]["Ime"] + "</a></b><br/>" + vrhovi[x]["Visina"] + "m";
+                    markers.addLayer(L.marker([vrhovi[x]["KoordinateS"], vrhovi[x]["KoordinateD"]]).bindPopup(niz));
+                }
+                map.addLayer(markers);
+
+                //search
+                var vrh = [];
+                $.getJSON("/api/v1/vrh", function(result){
+                    for (v in result) {
+                        vrh.push(result[v]["ime"] + " - " + result[v]["visina"] + "m" + " " + result[v]["vrhId"]);
+                    }
+                });
+                autocomplete(document.getElementById("searchField"), vrh);
             }
-            map.addLayer(markers);
-        }
         </script>
     </div>
 </div>

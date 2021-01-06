@@ -100,6 +100,7 @@ body {
 
 #map {
   height: 80vh;
+  z-index: -1;
 }
 
 #vreme {
@@ -172,4 +173,33 @@ div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.n
 form input[type=file] {
   margin: 0 auto;
   width: 33%;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  background-color: rgb(30, 255, 169) !important;
+  color: #ffffff;
 }
