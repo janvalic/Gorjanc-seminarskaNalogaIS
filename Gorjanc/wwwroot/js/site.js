@@ -8,6 +8,7 @@ function autocomplete(searchEle, arr) {
         var divCreate,
         b,
         i,
+        l,
         fieldVal = this.value;
         closeAllLists();
         if (!fieldVal) {
@@ -20,16 +21,14 @@ function autocomplete(searchEle, arr) {
         this.parentNode.appendChild(divCreate);
         for (i = 0; i <arr.length; i++) {
             if ( arr[i].substr(0, fieldVal.length).toUpperCase() == fieldVal.toUpperCase() ) {
-                var l = arr[i].split(" ");
-                l = l[l.length-1];
                 b = document.createElement("DIV");
-                b.innerHTML = "<a href ='/Vrhovi/Vrh/" + l + "'>";
-                b.innerHTML += "<strong>" + arr[i].substr(0, fieldVal.length) + "</strong>";
-                b.innerHTML += arr[i].substr(fieldVal.length, arr[i].length-l.length-1);
-                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                b.innerHTML += "</a>";
+                b.innerHTML = "<strong>" + arr[i].substr(0, fieldVal.length) + "</strong>";
+                b.innerHTML += arr[i].substring(fieldVal.length, arr[i].length-arr[i].split(" ! ")[1].length-3);
+                b.innerHTML += "<input type='hidden' value='" + arr[i]+ "'>";
                 b.addEventListener("click", function(e) {
-                    searchEle.value = this.getElementsByTagName("input")[0].value;
+                    var x = this.getElementsByTagName("input")[0].value.split(" ! ")
+                    searchEle.value = x[0];
+                    document.getElementById("vrhSearchId").value = x[1];
                     closeAllLists();
                 });
                 divCreate.appendChild(b);

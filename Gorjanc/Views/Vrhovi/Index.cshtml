@@ -22,11 +22,13 @@
     <div id="mapa">
         <h2>Izberi vrh:</h2>
         <div class="break"></div>
-        <form autocomplete="off">
+        <form autocomplete="off" method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Vrh">
             <div class="autocomplete" style="width:300px;">
-            <input id="searchField" type="text" name="vrh" placeholder="Poišči vrh" />
+                <input id="searchField" type="text" name="vrh" placeholder="Poišči vrh" />
+                <input id="vrhSearchId" type="hidden" name="id" value="1"/>
+                <div id="test"></div>
             </div>
-            <input type="submit" />
+            <input type="submit" value="Išči"/>
         </form>
         <div id="map"></div>
         <script>
@@ -48,7 +50,7 @@
                 var vrh = [];
                 $.getJSON("/api/v1/vrh", function(result){
                     for (v in result) {
-                        vrh.push(result[v]["ime"] + " - " + result[v]["visina"] + "m" + " " + result[v]["vrhId"]);
+                        vrh.push(result[v]["ime"] + " - " + result[v]["visina"] + "m" + " ! " + result[v]["vrhId"]);
                     }
                 });
                 autocomplete(document.getElementById("searchField"), vrh);
