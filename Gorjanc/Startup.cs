@@ -30,7 +30,7 @@ namespace Gorjanc
             services.AddControllersWithViews();
 
             services.AddDbContext<GorjancContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("GorjancContext")));
+            options.UseSqlServer(Configuration.GetConnectionString("AzureContext")));
 
             services.AddIdentity<Oseba, IdentityRole>(options => {
                 options.Stores.MaxLengthForKeys = 128;
@@ -66,7 +66,7 @@ namespace Gorjanc
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api/v1/swagger.json", "Gorjanc API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gorjanc API V1");
             });
             app.UseRouting();
 
