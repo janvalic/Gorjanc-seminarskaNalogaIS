@@ -203,3 +203,7 @@ form input[type=file] {
   background-color: rgb(30, 255, 169) !important;
   color: #ffffff;
 }
+
+.table {
+  margin-top: 20vh;
+}
