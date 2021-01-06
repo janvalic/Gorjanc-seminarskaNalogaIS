@@ -8,7 +8,7 @@ Jan Valič - 63190308
 Z informacijskim sistemom Gorjanc bomo podprli ogled in shranjevanje hribolaznih podvigov po celotni Sloveniji. 
 Aplikacija omogoča registracijo in prijavo v sistem, dodajanje in ogled osvojenih vrhov, shranjevanje slik s podviga.
 
-###Zaslonske slike
+### Zaslonske slike
 
 
 ### Opis nalog
