@@ -31,7 +31,7 @@ namespace Gorjanc
 
             services.AddDbContext<GorjancContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("AzureContext")));
-
+            //test
             services.AddIdentity<Oseba, IdentityRole>(options => {
                 options.Stores.MaxLengthForKeys = 128;
                 options.Password.RequireDigit = false;
