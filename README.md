@@ -9,14 +9,16 @@ Z informacijskim sistemom Gorjanc bomo podprli ogled in shranjevanje hribolaznih
 Aplikacija omogoča registracijo in prijavo v sistem, dodajanje in ogled osvojenih vrhov, shranjevanje slik s podviga.
 
 ### Zaslonske slike
-
+![slika_1](https://i.imgur.com/4QEeYWX.jpg)
+![slika_2](https://i.imgur.com/AJGpxmv.png)
+![slika_3](https://i.imgur.com/rELYGgn.png)
 
 ### Opis nalog
-Jan Valič - 
+Jan Valič - <br/>
 Žan Luka Nusdorfer - 
 
 ### Podatkovni model
-
+![baza](https://i.imgur.com/swWSfNj.png)
 
 ### Mobilna aplikacija
 https://github.com/janvalic/GorjancApp-seminarskaNalogaIS
