@@ -103,7 +103,7 @@
         });
 
         //slike
-        $.getJSON("/Vrhovi/VrhSlike", function(result){
+        $.getJSON("https://gorjanc-dev.azurewebsites.net/api/v1/slika", function(result){
             for (slika in result) {
                 $("#test").append("<img class='image' src='/Images/" + result[slika]["ime"] + "'>");
             }
