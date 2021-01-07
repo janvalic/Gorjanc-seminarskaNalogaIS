@@ -218,6 +218,10 @@ form div.autocomplete input[type=text] {
   margin-top: 20vh;
 }
 
-.slika {
+#slike {
+  width: 100%;
+}
+
+.slika img{
   max-width: 100%;
 }

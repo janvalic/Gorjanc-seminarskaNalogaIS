@@ -103,7 +103,7 @@
         });
 
         //slike
-        $.getJSON("https://gorjanc-dev.azurewebsites.net/api/v1/slika", function(result){
+        $.getJSON("/api/v1/slika", function(result){
             for (slika in result) {
                 $("#slike").append("<div class='slika'><img class='image' src='/Images/" + result[slika]["ime"] + "'></div>");
             }
