@@ -217,3 +217,7 @@ form div.autocomplete input[type=text] {
 .table {
   margin-top: 20vh;
 }
+
+.slika {
+  max-width: 100%;
+}

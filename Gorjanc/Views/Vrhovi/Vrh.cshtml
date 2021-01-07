@@ -61,7 +61,7 @@
         <div class="break"></div>
     </div>
 
-    <div id="test">
+    <div id="slike">
         <h2>Slike</h2>
         <div class="break"></div>
     </div>
@@ -105,7 +105,7 @@
         //slike
         $.getJSON("https://gorjanc-dev.azurewebsites.net/api/v1/slika", function(result){
             for (slika in result) {
-                $("#test").append("<img class='image' src='/Images/" + result[slika]["ime"] + "'>");
+                $("#slike").append("<div class='slika'><img class='image' src='/Images/" + result[slika]["ime"] + "'></div>");
             }
         });
     }
