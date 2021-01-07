@@ -81,6 +81,7 @@ body {
   background-image: url("/Images/triglav.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
 }
 
 #tekst {
@@ -88,6 +89,10 @@ body {
   top: calc(50% - 77px);
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#tekst img {
+  width: 30vw;
 }
 
 #onas {
@@ -108,7 +113,7 @@ body {
   width: 100%;
 }
 
-#test {
+#slike {
   margin-top: 5vh;
 }
 
@@ -127,6 +132,7 @@ body {
   background-image: url("/Images/banner1.png");
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
 }
 
 .name {
@@ -149,7 +155,6 @@ body {
 
 #ivk {
   width: 50%;
-  height: 20vh;
   display: inline-block;
 }
 
@@ -164,6 +169,12 @@ div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.n
   width: 12.5%;
   display: inline-block;
   text-align: center;
+}
+
+span {
+  display: block;
+  margin-top: 7px;
+  font-weight: 200;
 }
 
 .image {
@@ -216,6 +227,7 @@ form div.autocomplete input[type=text] {
 
 .table {
   margin-top: 20vh;
+  width: 100%;
 }
 
 #slike {
@@ -224,4 +236,51 @@ form div.autocomplete input[type=text] {
 
 .slika img{
   max-width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+  #tekst {
+    width: 100%;
+    color: #fff;
+  }
+
+  #tekst img {
+    width: 60vw;
+  }
+
+  #data {
+    margin-top: 20vh;
+  }
+  
+  #data table {
+    width: 100%;
+  }
+
+  #data td {
+    width: 50%;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #ivk {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  #add {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+  }
+
+  div.napoved-0, div.napoved-1, div.napoved-2, div.napoved-3, div.napoved-4, div.napoved-5, div.napoved-6, div.napoved-7{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
 }

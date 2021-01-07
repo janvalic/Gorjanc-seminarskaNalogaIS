@@ -96,9 +96,9 @@
                 $("#vreme").append("<div class='napoved-"+x+"'></div>")
                 $(".napoved-"+x).append("<div class='dan'> <b>" + dan + "</b></div");
                 $(".napoved-"+x).append("<div class='opis'><img src='http://openweathermap.org/img/wn/" + result["daily"][x]["weather"][0]["icon"] + "	&#64;2x.png'></div");
-                $(".napoved-"+x).append("<div class='temperatura'>" + Math.round(result["daily"][x]["temp"]["day"] * 10) / 10 + "°C</div");
-                $(".napoved-"+x).append("<div class='občutek'>" + Math.round(result["daily"][x]["feels_like"]["day"] * 10) / 10 + "°C</div");
-                $(".napoved-"+x).append("<div class='veter'>" + Math.round(result["daily"][x]["wind_speed"] * 10) / 10 + " km/h</div");
+                $(".napoved-"+x).append("<div class='temperatura'><span>Temperatura</span>" + Math.round(result["daily"][x]["temp"]["day"] * 10) / 10 + "°C</div");
+                $(".napoved-"+x).append("<div class='občutek'><span>Občutek</span>" + Math.round(result["daily"][x]["feels_like"]["day"] * 10) / 10 + "°C</div");
+                $(".napoved-"+x).append("<div class='veter'><span>Veter</span>" + Math.round(result["daily"][x]["wind_speed"] * 10) / 10 + " km/h</div");
             }
         });
 
@@ -111,6 +111,7 @@
     }
     </script>
 
+    <div class="break"></div>
     <div class="form">
         <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike">
             <div class="form-group">
