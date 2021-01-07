@@ -103,7 +103,7 @@
         });
 
         //slike
-        $.getJSON("https://localhost:5001/Vrhovi/VrhSlike", function(result){
+        $.getJSON("/Vrhovi/VrhSlike", function(result){
             for (slika in result) {
                 $("#test").append("<img class='image' src='/Images/" + result[slika]["ime"] + "'>");
             }
