@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Gorjanc.Data;
 using Gorjanc.Models;
+using Gorjanc.Filters;
 
 namespace Gorjanc.Controllers_Api
 {
     [Route("api/v1/Oseba")]
     [ApiController]
+    [ApiKeyAuth]
     public class OsebeApiController : ControllerBase
     {
         private readonly GorjancContext _context;
