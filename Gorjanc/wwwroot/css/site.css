@@ -283,4 +283,9 @@ form div.autocomplete input[type=text] {
     text-align: center;
     margin-bottom: 5vh;
   }
+
+  form input[type=file] {
+    margin: 0 auto;
+    width: 100%;
+  }
 }

@@ -105,12 +105,13 @@
         //slike
         $.getJSON("/api/v1/slika", function(result){
             for (slika in result) {
-                $("#slike").append("<div class='slika'><img class='image' src='/Images/" + result[slika]["ime"] + "'></div>");
+                if (parseInt(result[slika]["vrhId"]) == parseInt(vrhovi["VrhId"])) {
+                    $("#slike").append("<div class='slika'><img class='image' src='/Images/" + result[slika]["ime"] + "'></div>");
+                }
             }
         });
     }
     </script>
-
     <div class="break"></div>
     <div class="form">
         <form method="post" enctype="multipart/form-data" asp-controller="Vrhovi" asp-action="Slike">
