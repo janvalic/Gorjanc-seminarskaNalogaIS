@@ -20,5 +20,5 @@ Jan Valič - <br/>
 ### Podatkovni model
 ![baza](https://i.imgur.com/swWSfNj.png)
 
-### Mobilna aplikacija
-https://github.com/janvalic/GorjancApp-seminarskaNalogaIS
+### Povezava do strani
+https://gorjanc.azurewebsites.net
